@@ -16,6 +16,8 @@ public class MainMenu implements ActionListener {
     JPanel top = new JPanel();
     JPanel left = new JPanel();
     JList sidebar;
+    FSUtils fsUtils;
+    JPanel center = new JPanel();
 
     MainMenu(){
         init();
@@ -79,9 +81,16 @@ public class MainMenu implements ActionListener {
         Object src = e.getSource();
         if(src == this.open){
             topBar.setBackground(Color.RED);
+            fsUtils = new FSUtils();
+            String print = fsUtils.readFile("plik1.txt");
+            JLabel label = new JLabel(print);
+            center.add(label);
+            box.add(center, BorderLayout.CENTER);
         }
         if(src == save){
             topBar.setBackground(Color.GREEN);
+            fsUtils = new FSUtils();
+            fsUtils.saveFile("plik1.txt", "asfoighhadsgsdgadgadgad \r\n saifhdoighasoihgoasgads");
         }
         if(src == option4){
             topBar.setBackground(Color.BLUE);
